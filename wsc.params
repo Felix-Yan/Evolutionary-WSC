@@ -1,0 +1,38 @@
+parent.0 = koza.params
+
+seed.0 = 11
+composition-task     = problem.xml
+composition-taxonomy = taxonomy.xml
+composition-services = services-output.xml
+fitness-weight1      = 0.2
+fitness-weight2      = 0.3
+fitness-weight3      = 0.2
+fitness-weight4      = 0.3
+fitness-weight5      = 0.3
+fitness-weight6      = 0.3
+fitness-weight7      = 0.4
+
+# We have one function set, of class GPFunctionSet
+gp.fs.size = 1
+gp.fs.0 = ec.gp.GPFunctionSet
+# We'll call the function set "f0".
+gp.fs.0.name = f0
+
+# We have three functions in the function set.  They are:
+gp.fs.0.size = 3
+gp.fs.0.func.0 = wsc.ServiceNode
+gp.fs.0.func.0.nc = nc0
+gp.fs.0.func.1 = wsc.Sequence
+gp.fs.0.func.1.nc = nc2
+gp.fs.0.func.2 = wsc.Parallel
+gp.fs.0.func.2.nc = nc2
+
+eval.problem = wsc.WSC
+init = wsc.WSCInitializer
+eval.problem.data = wsc.WSCData
+
+# Use simple fitness, and do not quit run early
+pop.subpop.0.species.fitness.maximize = true
+pop.subpop.0.species.fitness = ec.simple.SimpleFitness
+quit-on-run-complete = false
+
